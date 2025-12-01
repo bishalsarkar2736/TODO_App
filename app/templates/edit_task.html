@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Edit Task{% endblock %}
+
+{% block content %}
+<div class="edit_task-box">
+    <h2>Edit Task</h2>
+    <form method="post">
+        <label for="title">Task Title:</label>
+        <input type="text" id="title" name="title" value="{{ task.title }}" required>
+
+        <label for="due_date">Due Date</label>
+        <input type="date" id="due_date" name="due_date"
+                value="{{ task.due_date.strftime('%y-%m-%d' ) if task.due_date else '' }}">
+                
+        <button type="submit" class="btn">Save Changes</button>
+        <a href=" {{ url_for('tasks.view_tasks') }}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+{% endblock %}

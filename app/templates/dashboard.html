@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %} Dashboard | To-Do App {% endblock %}
+{% block content %}
+
+<div class="container mt-4">
+  <h2 class="fw-bold mb-4 text-center">📊 Task Dashboard</h2>
+
+  <div class="row text-center mb-4">
+    <div class="col-md-3 mb-3">
+      <div class="card shadow-sm border-0 p-3">
+        <h5 class="text-secondary">Total Tasks</h5>
+        <h3 class="fw-bold">{{ total_tasks }}</h3>
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+      <div class="card shadow-sm border-0 p-3">
+        <h5 class="text-success">Done</h5>
+        <h3 class="fw-bold">{{ done_tasks }}</h3>
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+      <div class="card shadow-sm border-0 p-3">
+        <h5 class="text-warning">Working</h5>
+        <h3 class="fw-bold">{{ working_tasks }}</h3>
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+      <div class="card shadow-sm border-0 p-3">
+        <h5 class="text-danger">Pending</h5>
+        <h3 class="fw-bold">{{ pending_tasks }}</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="card p-4 shadow-sm border-0">
+    <h5 class="mb-3 text-center">Task Distribution</h5>
+    <canvas id="taskChart" height="120"></canvas>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+{% endblock %}

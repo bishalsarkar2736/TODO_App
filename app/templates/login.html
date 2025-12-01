@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="login-box">
+    <h2>Login to Your Account</h2>
+    <form  method="post" action="{{ url_for('auth.login', next=request.args.get('next')) }}">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="Enter username" required> 
+        </div>
+
+         <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Enter password" required>
+        </div>
+        
+        <button type="submit" class="btn">Login</button>
+    </form>
+    <p class="form-note">
+        Don't have an Account?
+        <a href="{{ url_for('auth.signup' )}}">Sign up here</a>
+    </p>
+</div>
+{% endblock%}
