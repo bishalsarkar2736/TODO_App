@@ -26,6 +26,10 @@ def signup():
         if password != confirm:
             flash("Passwords do not match!",'danger')
             return redirect(url_for('auth.signup'))
+        
+        if User.query.filter_by(email=email).first():
+            flash("Email already registered", "danger")
+            return redirect(url_for("auth.signup"))
 
         #check if user exist
         existing_user = User.query.filter_by(username=username).first()
